@@ -1,5 +1,3 @@
 export class Event {
-  constructor(
-    readonly timestamp = new Date(),
-  ) {}
+  constructor(readonly timestamp = new Date()) {}
 }
