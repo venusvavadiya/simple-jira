@@ -1,6 +1,7 @@
 import { Controller, Get } from '@nestjs/common';
 import { EventStoreDBClient } from '@eventstore/db-client';
 import { EventStoreDBEventStore } from './event-store-db.event-store';
+import { ProjectCreatedV1Event } from './project-created-v1.event';
 
 @Controller()
 export class AppController {
@@ -10,9 +11,8 @@ export class AppController {
     const client = EventStoreDBClient.connectionString('esdb://localhost:2113?tls=false');
     const eventStore = new EventStoreDBEventStore(client);
 
-    const someId = 'some-id';
-    const projectCreatedEventDataV1 = { projectId: someId };
-    const projectCreatedEventV1 = { type: 'project-created-v1', data: projectCreatedEventDataV1 }
+    const someId = 'other-id2';
+    const projectCreatedEventV1 = new ProjectCreatedV1Event(someId);
     eventStore.append(`project-aggregate-${someId}`, [projectCreatedEventV1], -1);
 
     return {};
