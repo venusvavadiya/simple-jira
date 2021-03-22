@@ -17,8 +17,7 @@
           "options": {
             "outputPath": "dist/apps/web",
             "main": "apps/web/src/main.ts",
-            "tsConfig": "apps/web/tsconfig.app.json",
-            "assets": ["apps/web/src/assets"]
+            "tsConfig": "apps/web/tsconfig.app.json"
           },
           "configurations": {
             "production": {
