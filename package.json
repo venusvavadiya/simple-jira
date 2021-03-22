@@ -43,9 +43,11 @@
     "dotenv": "6.2.0",
     "eslint": "7.10.0",
     "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^8.1.0",
     "eslint-import-resolver-typescript": "^2.4.0",
     "eslint-plugin-import": "^2.22.1",
     "jest": "26.2.2",
+    "prettier": "^2.2.1",
     "ts-jest": "26.4.0",
     "ts-node": "~9.1.1",
     "typescript": "~4.0.3"
