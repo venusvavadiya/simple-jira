@@ -1,7 +1,6 @@
 {
   "name": "simple-jira",
   "version": "0.0.0",
-  "license": "MIT",
   "scripts": {
     "nx": "nx",
     "start": "nx serve",
@@ -38,24 +37,29 @@
     "@nrwl/tao": "11.5.2",
     "@nrwl/workspace": "11.5.2",
     "@types/jest": "26.0.8",
-    "@types/node": "14.14.33",
+    "@types/node": "12.12.38",
     "@typescript-eslint/eslint-plugin": "4.3.0",
     "@typescript-eslint/parser": "4.3.0",
-    "dotenv": "8.2.0",
+    "dotenv": "6.2.0",
     "eslint": "7.10.0",
-    "eslint-config-prettier": "8.1.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-import-resolver-typescript": "^2.4.0",
+    "eslint-plugin-import": "^2.22.1",
     "jest": "26.2.2",
-    "prettier": "2.2.1",
+    "prettier": "^2.2.1",
     "ts-jest": "26.4.0",
     "ts-node": "~9.1.1",
     "typescript": "~4.0.3"
   },
   "dependencies": {
+    "@eventstore/db-client": "^1.0.1",
     "@nestjs/common": "^7.0.0",
     "@nestjs/core": "^7.0.0",
     "@nestjs/platform-express": "^7.0.0",
     "reflect-metadata": "^0.1.13",
     "rxjs": "~6.6.3",
-    "tslib": "^2.0.0"
+    "tslib": "^2.0.0",
+    "uuid": "^8.3.2"
   }
 }
