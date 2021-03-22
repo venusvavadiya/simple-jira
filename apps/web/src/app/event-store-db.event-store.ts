@@ -12,15 +12,15 @@ export class EventStoreDBEventStore {
   async append(
     stream: string,
     events: Event[],
-    version: number,
+    revision: number,
   ): Promise<void> {
     const jsonEvents = events.map(EventStoreDBEventStore.mapEventToJsonEvent);
-    const expectedRevision = EventStoreDBEventStore.determineVersion(version);
+    const expectedRevision = EventStoreDBEventStore.determineRevision(revision);
     await this.client.appendToStream(stream, jsonEvents, { expectedRevision });
   }
 
-  private static determineVersion(version: number): typeof NO_STREAM | bigint {
-    return version === -1 ? NO_STREAM : BigInt(version);
+  private static determineRevision(revision: number): typeof NO_STREAM | bigint {
+    return revision === -1 ? NO_STREAM : BigInt(revision);
   }
 
   private static mapEventToJsonEvent(event: Event) {
