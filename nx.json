@@ -33,6 +33,9 @@
     },
     "domain-core": {
       "tags": []
+    },
+    "domain-project": {
+      "tags": []
     }
   }
 }
