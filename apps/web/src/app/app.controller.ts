@@ -9,16 +9,24 @@ export class AppController {
   @Get()
   // eslint-disable-next-line class-methods-use-this
   async getData() {
-    try{
-      const client = EventStoreDBClient.connectionString('esdb://localhost:2113?tls=false');
-      const eventStore = new EventStoreDBEventStore(client);
+    try {
+      const className = 'ProjectCreatedV1Event';
+      const e = global[className];
+      console.log(e);
 
-      const someId = 'other-id2';
+      // const client = EventStoreDBClient.connectionString('esdb://localhost:2113?tls=false');
+      // const eventStore = new EventStoreDBEventStore(client);
+      //
+      // const someId = 'some-id';
 
       // const projectCreatedEventV1 = new ProjectCreatedV1Event(someId);
-      const projectRenamedEventV1 = new ProjectRenamedV1Event(someId, 'Project Name 2');
+      // await eventStore.append(`project-aggregate-${someId}`, [projectCreatedEventV1], -1);
+      //
+      // const projectRenamedEventV1 = new ProjectRenamedV1Event(someId, 'Test project');
+      // await eventStore.append(`project-aggregate-${someId}`, [projectRenamedEventV1], 0);
 
-      await eventStore.append(`project-aggregate-${someId}`, [projectRenamedEventV1], 3);
+      // const projectRenamedEventV12 = new ProjectRenamedV1Event(someId, 'Test project updated');
+      // await eventStore.append(`project-aggregate-${someId}`, [projectRenamedEventV12], 2);
     } catch (e) {
       console.log(e);
     }
