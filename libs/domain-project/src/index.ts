@@ -1,1 +1,2 @@
-export * from './lib/domain-project';
+export * from './event/project-created.event';
+export * from './event/project-renamed.event';

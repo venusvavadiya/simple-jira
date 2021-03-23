@@ -1,1 +1,1 @@
-export * from './lib/domain-core';
+export * from './core/event';
