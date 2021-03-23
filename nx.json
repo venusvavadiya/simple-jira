@@ -30,6 +30,9 @@
   "projects": {
     "web": {
       "tags": []
+    },
+    "domain-core": {
+      "tags": []
     }
   }
 }
