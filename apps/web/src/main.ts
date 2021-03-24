@@ -18,9 +18,14 @@ async function bootstrap() {
     .subscribeToAll({ filter })
     .on('data', async (resolvedEvent) => {
       // console.log(resolvedEvent);
-      const e = new events[resolvedEvent.event.type](...Object.values(resolvedEvent.event.data));
-      console.log(e);
+
+      // const e = new events[resolvedEvent.event.type](...Object.values(resolvedEvent.event.data));
+      // console.log(e);
+
+      // @ts-ignore
       const query = { _id: resolvedEvent.event.data.projectId };
+
+      // @ts-ignore
       const update = { $set: { name: resolvedEvent.event.data.projectName } };
       await projects.updateOne(query, update, { upsert: true });
     });

@@ -6,6 +6,8 @@ import {
 } from '@eventstore/db-client';
 import { Event } from './event';
 
+// TODO: Rename revision to expectedRevision
+
 export class EventStoreDBEventStore {
   constructor(private readonly client: EventStoreDBClient) {}
 
