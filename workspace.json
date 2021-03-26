@@ -13,7 +13,9 @@
       "targets": {
         "build": {
           "executor": "@nrwl/node:build",
-          "outputs": ["{options.outputPath}"],
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "outputPath": "dist/apps/web",
             "main": "apps/web/src/main.ts",
@@ -42,14 +44,68 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/web/**/*.ts"]
+            "lintFilePatterns": [
+              "apps/web/**/*.ts"
+            ]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/web"],
+          "outputs": [
+            "coverage/apps/web"
+          ],
           "options": {
             "jestConfig": "apps/web/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "domain-core": {
+      "root": "libs/domain-core",
+      "sourceRoot": "libs/domain-core/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/domain-core/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/domain-core"
+          ],
+          "options": {
+            "jestConfig": "libs/domain-core/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "domain-project": {
+      "root": "libs/domain-project",
+      "sourceRoot": "libs/domain-project/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/domain-project/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/domain-project"
+          ],
+          "options": {
+            "jestConfig": "libs/domain-project/jest.config.js",
             "passWithNoTests": true
           }
         }
