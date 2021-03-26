@@ -1,1 +1,2 @@
-export * from './lib/domain-core';
+export * from './command/command-handler';
+export * from './command/command';
