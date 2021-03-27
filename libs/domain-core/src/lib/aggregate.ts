@@ -6,8 +6,7 @@ export class Aggregate {
   revision = -1
 
   applyEvent(event: Event) {
-    const eventName = event.type ?? event.constructor.name;
-    const methodName = `apply${eventName}`;
+    const methodName = `apply${event.type}`;
     this[methodName](event);
     this.revision += 1;
   }
