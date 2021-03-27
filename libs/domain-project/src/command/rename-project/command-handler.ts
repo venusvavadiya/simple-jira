@@ -6,8 +6,9 @@ export class RenameProjectCommandHandler implements CommandHandler<RenameProject
   constructor(private readonly projectAggregateRepository: ProjectAggregateRepository) {}
 
   async handle(command: RenameProjectCommand): Promise<void> {
-    const projectAggregate = await this.projectAggregateRepository.getById(command.projectId);
-    projectAggregate.rename(command.projectName);
+    const { projectId, projectName } = command;
+    const projectAggregate = await this.projectAggregateRepository.getById(projectId);
+    projectAggregate.rename(projectName);
     await this.projectAggregateRepository.save(projectAggregate);
   }
 }
