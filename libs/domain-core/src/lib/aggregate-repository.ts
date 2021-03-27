@@ -1,5 +1,5 @@
 import { Aggregate } from './aggregate';
-import { EventStore } from '../event/event-store';
+import { EventStore } from './event-store';
 
 export abstract class AggregateRepository<T extends Aggregate> {
   abstract getNewInstance(): T
