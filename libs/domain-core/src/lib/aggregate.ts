@@ -1,4 +1,4 @@
-import { Event } from '../event/event';
+import { Event } from './event';
 
 export class Aggregate {
   id: string
