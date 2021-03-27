@@ -30,5 +30,6 @@ export class AppController {
     const id = uuidv4();
     await this.createProjectCommandHandler.handle(new CreateProjectCommand(id));
     await this.renameProjectCommandHandler.handle(new RenameProjectCommand(id, 'New Name'));
+    return { id };
   }
 }
