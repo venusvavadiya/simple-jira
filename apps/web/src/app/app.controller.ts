@@ -1,28 +1,35 @@
 import { Controller, Get } from '@nestjs/common';
 import { EventStoreDBClient } from '@eventstore/db-client';
-import { EventStoreDBEventStore } from './event-store-db.event-store';
-import { ProjectCreatedV1Event } from './project-created-v1.event';
-import { ProjectRenamedV1Event } from './project-renamed-v1.event';
+import { EventStoreDBEventStore } from '@simple-jira/adapter-event-store-db';
+import {
+  CreateProjectCommandHandler,
+  CreateProjectCommand,
+  ProjectAggregateRepository,
+  RenameProjectCommandHandler,
+  RenameProjectCommand,
+} from '@simple-jira/domain-project';
+import { v4 as uuidv4 } from 'uuid';
 
 @Controller()
 export class AppController {
+  private readonly createProjectCommandHandler: CreateProjectCommandHandler
+  private readonly renameProjectCommandHandler: RenameProjectCommandHandler
+
+  constructor() {
+    const client = EventStoreDBClient.connectionString('esdb://localhost:2113?tls=false');
+    const eventStore = new EventStoreDBEventStore(client);
+
+    const projectAggRepo = new ProjectAggregateRepository(eventStore);
+
+    this.createProjectCommandHandler = new CreateProjectCommandHandler(projectAggRepo);
+    this.renameProjectCommandHandler = new RenameProjectCommandHandler(projectAggRepo);
+  }
+
   @Get()
-  // eslint-disable-next-line class-methods-use-this
   async getData() {
-    try{
-      const client = EventStoreDBClient.connectionString('esdb://localhost:2113?tls=false');
-      const eventStore = new EventStoreDBEventStore(client);
-
-      const someId = 'other-id2';
-
-      // const projectCreatedEventV1 = new ProjectCreatedV1Event(someId);
-      const projectRenamedEventV1 = new ProjectRenamedV1Event(someId, 'Project Name 2');
-
-      await eventStore.append(`project-aggregate-${someId}`, [projectRenamedEventV1], 3);
-    } catch (e) {
-      console.log(e);
-    }
-
-    return {};
+    const id = uuidv4();
+    await this.createProjectCommandHandler.handle(new CreateProjectCommand(id));
+    await this.renameProjectCommandHandler.handle(new RenameProjectCommand(id, 'New Name'));
+    return { id };
   }
 }

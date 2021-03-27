@@ -1,13 +1,17 @@
-import { Event } from '@simple-jira/domain-core';
+import { EventMetadata, Event } from '@simple-jira/domain-core';
 
-export class ProjectRenamedV1Event extends Event {
+export class ProjectRenamedV1Event implements Event {
+  readonly type = 'ProjectRenamedV1Event'
+
   readonly data: {
     readonly projectId: string
     readonly projectName: string
   }
 
+  readonly metadata: EventMetadata
+
   constructor(projectId: string, projectName: string) {
-    super();
     this.data = { projectId, projectName };
+    this.metadata = { timestamp: new Date() };
   }
 }
