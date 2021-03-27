@@ -1,10 +1,14 @@
 import { CommandHandler } from '@simple-jira/domain-core';
+import { ProjectAggregateRepository } from '../../aggregate-repository/project.aggregate-repository';
 import { RenameProjectCommand } from './command';
 
 export class RenameProjectCommandHandler implements CommandHandler<RenameProjectCommand> {
-  // eslint-disable-next-line max-len
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars, no-unused-vars, class-methods-use-this
+  constructor(private readonly projectAggregateRepository: ProjectAggregateRepository) {}
+
   async handle(command: RenameProjectCommand): Promise<void> {
-    throw new Error('Method not implemented.');
+    const { projectId, projectName } = command;
+    const projectAggregate = await this.projectAggregateRepository.getById(projectId);
+    projectAggregate.rename(projectName);
+    await this.projectAggregateRepository.save(projectAggregate);
   }
 }
