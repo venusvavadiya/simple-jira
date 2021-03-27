@@ -1,3 +1,3 @@
 export interface EventMetadata {
-  timestamp: Date
+  readonly timestamp: Date
 }

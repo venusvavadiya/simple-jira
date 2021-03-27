@@ -1,7 +1,10 @@
 import { EventMetadata } from './event-metadata';
 
-export interface Event<T> {
-  type: string
-  data: T
-  metadata: EventMetadata
+export class Event {
+  readonly metadata: EventMetadata
+
+  constructor() {
+    const timestamp = new Date();
+    this.metadata = { timestamp };
+  }
 }
