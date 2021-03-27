@@ -42,6 +42,6 @@ export class EventStoreDBEventStore implements EventStore {
   }
 
   private static mapResolvedEventToEvent(event: ResolvedEvent): Event {
-    return event as unknown as Event;
+    return event.event as unknown as Event;
   }
 }

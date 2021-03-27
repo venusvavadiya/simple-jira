@@ -1,1 +1,1 @@
-export * from './lib/adapter-event-store-db';
+export * from './lib/event-store-db.event-store';
