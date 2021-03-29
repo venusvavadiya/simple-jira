@@ -21,9 +21,9 @@ export class AppModule {
   static register(
     eventStore: EventStore,
     eventSubscription: EventSubscription,
-    mongoDb,
+    mongoDB,
   ): DynamicModule {
-    const projectsCollection = mongoDb.collection('projects');
+    const projectsCollection = mongoDB.collection('projects');
 
     eventSubscription.register(new ProjectAggregateMongoDBEventListener(projectsCollection));
 

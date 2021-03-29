@@ -6,17 +6,21 @@ import { AppModule } from './app/app.module';
 import { environment } from './environment';
 
 async function bootstrap() {
-  const mongoClient = new MongoClient('mongodb://root:root@localhost:27017', { useNewUrlParser: true });
-  await mongoClient.connect();
+  const { eventStoreDBUrl, mongoDBUrl, port } = environment;
 
-  const eventStoreDBClient = EventStoreDBClient.connectionString('esdb://localhost:2113?tls=false');
+  const useNewUrlParser = true;
+  const useUnifiedTopology = true;
+  const mongoDBConfig = { useNewUrlParser, useUnifiedTopology };
+  const mongoDBClient = new MongoClient(mongoDBUrl, mongoDBConfig);
+  await mongoDBClient.connect();
+
+  const eventStoreDBClient = EventStoreDBClient.connectionString(eventStoreDBUrl);
 
   const app = await NestFactory.create(AppModule.register(
     new EventStoreDBEventStore(eventStoreDBClient),
     new EventStoreDBEventSubscription(eventStoreDBClient),
-    mongoClient.db('simple-jira'),
+    mongoDBClient.db('simple-jira'),
   ));
-  const { port } = environment;
   await app.listen(port);
 }
 
