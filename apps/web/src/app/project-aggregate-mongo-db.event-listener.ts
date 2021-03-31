@@ -20,6 +20,6 @@ export class ProjectAggregateMongoDBEventListener implements EventListener {
   async onProjectRenamedV1Event(event: ProjectRenamedV1Event) {
     const query = { _id: event.data.projectId };
     const update = { $set: { name: event.data.projectName } };
-    await this.projectsCollection.updateOne(query, update, { upsert: true });
+    await this.projectsCollection.updateOne(query, update);
   }
 }
