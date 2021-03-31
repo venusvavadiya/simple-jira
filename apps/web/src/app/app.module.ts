@@ -1,12 +1,12 @@
 import { DynamicModule, Module } from '@nestjs/common';
-import { EventStoreDBClient } from '@eventstore/db-client';
-import { EventStoreDBEventStore } from '@simple-jira/adapter-event-store-db';
+import { EventStore, EventSubscription } from '@simple-jira/domain-core';
 import {
   CreateProjectCommandHandler,
   ProjectAggregateRepository,
   RenameProjectCommandHandler,
 } from '@simple-jira/domain-project';
 import { AppController } from './app.controller';
+import { ProjectAggregateMongoDBEventListener } from './project-aggregate-mongo-db.event-listener';
 
 function getProviderConfig<T>(instance: T): { provide: string, useValue: T } {
   const provide = instance.constructor.name;
@@ -18,9 +18,14 @@ function getProviderConfig<T>(instance: T): { provide: string, useValue: T } {
   controllers: [AppController],
 })
 export class AppModule {
-  static register(): DynamicModule {
-    const client = EventStoreDBClient.connectionString('esdb://localhost:2113?tls=false');
-    const eventStore = new EventStoreDBEventStore(client);
+  static register(
+    eventStore: EventStore,
+    eventSubscription: EventSubscription,
+    mongoDB,
+  ): DynamicModule {
+    const projectsCollection = mongoDB.collection('projects');
+
+    eventSubscription.register(new ProjectAggregateMongoDBEventListener(projectsCollection));
 
     const projectAggRepo = new ProjectAggregateRepository(eventStore);
 
