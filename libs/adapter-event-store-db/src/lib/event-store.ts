@@ -8,7 +8,7 @@ import {
   ResolvedEvent,
   START,
 } from '@eventstore/db-client';
-import { EventStore, Event } from '@simple-jira/domain-core';
+import { EventStore, Event } from '@points-log/domain-core';
 
 export class EventStoreDBEventStore implements EventStore {
   constructor(private readonly client: EventStoreDBClient) {}

@@ -1,4 +1,4 @@
-import { Aggregate } from '@simple-jira/domain-core';
+import { Aggregate } from '@points-log/domain-core';
 import { ProjectCreatedV1Event } from '../event/project-created.event';
 import { ProjectRenamedV1Event } from '../event/project-renamed.event';
 

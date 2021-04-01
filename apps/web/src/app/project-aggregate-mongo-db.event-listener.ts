@@ -1,4 +1,4 @@
-import { EventListener, Event } from '@simple-jira/domain-core';
+import { EventListener, Event } from '@points-log/domain-core';
 import { ProjectCreatedV1Event, ProjectRenamedV1Event } from '@simple-jira/domain-project';
 
 export class ProjectAggregateMongoDBEventListener implements EventListener {

@@ -385,6 +385,19 @@
     google-protobuf "^3.14.0"
     uuid "^8.3.2"
 
+"@eventstore/db-client@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@eventstore/db-client/-/db-client-1.1.0.tgz#ab1141a7647e83fcbd9972706edc14ac2e8fcd31"
+  integrity sha512-PBZ0TFYOTIsVED4bVRJVEdux+dDEL2lNwDSy6c9QG5+y4Ici+hNX01Qek5urOQJOcrNG+nElEJkpwfme1lIc1Q==
+  dependencies:
+    "@grpc/grpc-js" "^1.2.2"
+    "@types/debug" "^4.1.5"
+    "@types/google-protobuf" "^3.7.4"
+    "@types/node" "^12.12.47"
+    debug "^4.3.1"
+    google-protobuf "^3.14.0"
+    uuid "^8.3.2"
+
 "@grpc/grpc-js@^1.2.2":
   version "1.2.11"
   resolved "https://registry.yarnpkg.com/@grpc/grpc-js/-/grpc-js-1.2.11.tgz#68faa56bded64844294dc6429185503376f05ff1"
@@ -823,6 +836,19 @@
     chalk "^4.1.0"
     consola "^2.15.0"
     node-fetch "^2.6.1"
+
+"@points-log/adapter-event-store-db@^0.0.1":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@points-log/adapter-event-store-db/-/adapter-event-store-db-0.0.1.tgz#202c1982554b43620089bc3683fb161ecf1073ed"
+  integrity sha512-6tmqgac15y2aCyZcWJaqhQKaGLOhNhFMUPnD7n9Bm7M0f7B4MyUoxdlVJiopP/nNq1fPiUgUxvp+BusLOAl9Vg==
+  dependencies:
+    "@eventstore/db-client" "^1.1.0"
+    "@points-log/domain-core" "0.0.3"
+
+"@points-log/domain-core@0.0.3", "@points-log/domain-core@^0.0.3":
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/@points-log/domain-core/-/domain-core-0.0.3.tgz#1c3a00d4880a66da40889ef4dfa81de873eba86c"
+  integrity sha512-O26k5U/1SU3mK3oCS5nYOSizHDPK3afy9chPio8x3yWxu7X39d0v/eLjcI8X3lGJU0UZ+28iYWOwtGdMdGglgA==
 
 "@sinonjs/commons@^1.7.0":
   version "1.8.2"

@@ -1,5 +1,5 @@
 import { EventStoreDBClient, streamNameFilter } from '@eventstore/db-client';
-import { EventListener, EventSubscription, Event } from '@simple-jira/domain-core';
+import { EventListener, EventSubscription, Event } from '@points-log/domain-core';
 
 export class EventStoreDBEventSubscription implements EventSubscription {
   constructor(private readonly client: EventStoreDBClient) {}

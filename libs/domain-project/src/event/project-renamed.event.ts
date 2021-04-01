@@ -1,4 +1,4 @@
-import { EventMetadata, Event } from '@simple-jira/domain-core';
+import { EventMetadata, Event } from '@points-log/domain-core';
 
 export class ProjectRenamedV1Event implements Event {
   readonly type = 'ProjectRenamedV1Event'
