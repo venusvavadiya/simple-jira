@@ -1,4 +1,4 @@
-import { AggregateRepository } from '@simple-jira/domain-core';
+import { AggregateRepository } from '@points-log/domain-core';
 import { ProjectAggregate } from '../aggregate/project.aggregate';
 
 export class ProjectAggregateRepository extends AggregateRepository<ProjectAggregate> {

@@ -1,4 +1,4 @@
-import { CommandHandler } from '@simple-jira/domain-core';
+import { CommandHandler } from '@points-log/domain-core';
 import { ProjectAggregateRepository } from '../aggregate-repository/project.aggregate-repository';
 import { RenameProjectCommand } from '../command/rename-project.command';
 

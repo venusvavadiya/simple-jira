@@ -1,5 +1,5 @@
 import { DynamicModule, Module } from '@nestjs/common';
-import { EventStore, EventSubscription } from '@simple-jira/domain-core';
+import { EventStore, EventSubscription } from '@points-log/domain-core';
 import {
   CreateProjectCommandHandler,
   ProjectAggregateRepository,

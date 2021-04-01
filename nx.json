@@ -31,12 +31,6 @@
     "web": {
       "tags": []
     },
-    "adapter-event-store-db": {
-      "tags": []
-    },
-    "domain-core": {
-      "tags": []
-    },
     "domain-project": {
       "tags": []
     }

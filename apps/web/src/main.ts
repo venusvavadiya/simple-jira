@@ -1,6 +1,6 @@
 import { EventStoreDBClient } from '@eventstore/db-client';
 import { NestFactory } from '@nestjs/core';
-import { EventStoreDBEventStore, EventStoreDBEventSubscription } from '@simple-jira/adapter-event-store-db';
+import { EventStoreDBEventStore, EventStoreDBEventSubscription } from '@points-log/adapter-event-store-db';
 import { MongoClient } from 'mongodb';
 import { AppModule } from './app/app.module';
 import { environment } from './environment';

@@ -61,56 +61,6 @@
         }
       }
     },
-    "adapter-event-store-db": {
-      "root": "libs/adapter-event-store-db",
-      "sourceRoot": "libs/adapter-event-store-db/src",
-      "projectType": "library",
-      "targets": {
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/adapter-event-store-db/**/*.ts"
-            ]
-          }
-        },
-        "test": {
-          "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/adapter-event-store-db"
-          ],
-          "options": {
-            "jestConfig": "libs/adapter-event-store-db/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "domain-core": {
-      "root": "libs/domain-core",
-      "sourceRoot": "libs/domain-core/src",
-      "projectType": "library",
-      "targets": {
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/domain-core/**/*.ts"
-            ]
-          }
-        },
-        "test": {
-          "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/domain-core"
-          ],
-          "options": {
-            "jestConfig": "libs/domain-core/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
     "domain-project": {
       "root": "libs/domain-project",
       "sourceRoot": "libs/domain-project/src",

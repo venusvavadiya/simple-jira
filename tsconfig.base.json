@@ -18,12 +18,6 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@simple-jira/adapter-event-store-db": [
-        "libs/adapter-event-store-db/src/index.ts"
-      ],
-      "@simple-jira/domain-core": [
-        "libs/domain-core/src/index.ts"
-      ],
       "@simple-jira/domain-project": [
         "libs/domain-project/src/index.ts"
       ]
