@@ -1,4 +1,5 @@
 import { DynamicModule, Module } from '@nestjs/common';
+import { GraphQLModule } from '@nestjs/graphql';
 import { EventStore, EventSubscription } from '@points-log/domain-core';
 import {
   CreateProjectCommandHandler,
@@ -7,6 +8,7 @@ import {
 } from '@simple-jira/domain-project';
 import { AppController } from './app.controller';
 import { ProjectAggregateMongoDBEventListener } from './project-aggregate-mongo-db.event-listener';
+import { ProjectsResolver } from './projects.resolver';
 
 function getProviderConfig<T>(instance: T): { provide: string, useValue: T } {
   const provide = instance.constructor.name;
@@ -16,6 +18,14 @@ function getProviderConfig<T>(instance: T): { provide: string, useValue: T } {
 
 @Module({
   controllers: [AppController],
+  providers: [ProjectsResolver],
+  imports: [
+    GraphQLModule.forRoot({
+      installSubscriptionHandlers: true,
+      autoSchemaFile: 'schema.gql',
+      path: 'projects',
+    }),
+  ],
 })
 export class AppModule {
   static register(
