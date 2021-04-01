@@ -372,19 +372,6 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@eventstore/db-client@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@eventstore/db-client/-/db-client-1.0.1.tgz#ea42e2b05520d150eb1c2553cc98d3d4391a14c6"
-  integrity sha512-131GmJtIhqrxJQucrEfwwkJGwn6gpFgcFYbjn07VoH6OHekGEOSdQi2FuKtcJ2MKqbYGJ6KbAn/3n6gMMT+Y1A==
-  dependencies:
-    "@grpc/grpc-js" "^1.2.2"
-    "@types/debug" "^4.1.5"
-    "@types/google-protobuf" "^3.7.4"
-    "@types/node" "^12.12.47"
-    debug "^4.3.1"
-    google-protobuf "^3.14.0"
-    uuid "^8.3.2"
-
 "@eventstore/db-client@^1.1.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@eventstore/db-client/-/db-client-1.1.0.tgz#ab1141a7647e83fcbd9972706edc14ac2e8fcd31"
