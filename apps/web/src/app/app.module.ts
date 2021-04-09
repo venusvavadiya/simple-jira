@@ -22,7 +22,7 @@ function getProviderConfig<T>(instance: T): { provide: string, useValue: T } {
   imports: [
     GraphQLModule.forRoot({
       installSubscriptionHandlers: true,
-      autoSchemaFile: 'schema.gql',
+      autoSchemaFile: true,
       path: 'projects',
     }),
   ],
