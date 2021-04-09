@@ -3,7 +3,12 @@ import { NestFactory } from '@nestjs/core';
 import { EventStoreDBEventStore, EventStoreDBEventSubscription } from '@points-log/adapter-event-store-db';
 import { MongoClient } from 'mongodb';
 import { AppModule } from './app/app.module';
-import { environment } from './environment';
+
+const environment = {
+  eventStoreDBUrl: 'esdb://localhost:2113?tls=false',
+  mongoDBUrl: 'mongodb://root:root@localhost:27017',
+  port: 8000,
+};
 
 async function bootstrap() {
   const { eventStoreDBUrl, mongoDBUrl, port } = environment;
