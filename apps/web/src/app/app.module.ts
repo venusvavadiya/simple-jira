@@ -21,7 +21,6 @@ function getProviderConfig<T>(instance: T): { provide: string, useValue: T } {
   providers: [ProjectsResolver],
   imports: [
     GraphQLModule.forRoot({
-      installSubscriptionHandlers: true,
       autoSchemaFile: true,
       path: 'projects',
     }),
