@@ -5,8 +5,8 @@ import { MongoClient } from 'mongodb';
 import { AppModule } from './app/app.module';
 
 const environment = {
-  eventStoreDBUrl: 'esdb://localhost:2113?tls=false',
-  mongoDBUrl: 'mongodb://root:root@localhost:27017',
+  eventStoreDBUrl: process.env.EVENT_STORE_DB_URL,
+  mongoDBUrl: process.env.MONGO_STORE_DB_URL,
   port: 8000,
 };
 
