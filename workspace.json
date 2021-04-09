@@ -19,7 +19,8 @@
           "options": {
             "outputPath": "dist/apps/web",
             "main": "apps/web/src/main.ts",
-            "tsConfig": "apps/web/tsconfig.app.json"
+            "tsConfig": "apps/web/tsconfig.app.json",
+            "generatePackageJson": true
           }
         },
         "serve": {
