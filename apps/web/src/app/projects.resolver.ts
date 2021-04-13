@@ -3,7 +3,8 @@ import {
 } from '@nestjs/graphql';
 import {
   CreateProjectCommand,
-  CreateProjectCommandHandler, RenameProjectCommand,
+  CreateProjectCommandHandler,
+  RenameProjectCommand,
   RenameProjectCommandHandler,
 } from '@simple-jira/domain-project';
 import { Project } from './read-models/project.model';
