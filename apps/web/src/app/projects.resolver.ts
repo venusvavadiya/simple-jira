@@ -7,6 +7,7 @@ import {
   RenameProjectCommand,
   RenameProjectCommandHandler,
 } from '@simple-jira/domain-project';
+import { v4 as uuidv4 } from 'uuid';
 import { Project } from './read-models/project.model';
 
 @Resolver((of) => Project)
@@ -22,14 +23,15 @@ export class ProjectsResolver {
   }
 
   @Mutation((returns) => String)
-  async addProject(@Args('id') id: string) {
+  async createProject() {
+    const id = uuidv4();
     await this.createProjectCommandHandler.handle(new CreateProjectCommand(id));
     return id;
   }
 
   @Mutation((returns) => String)
-  async renameProject(@Args('id') id: string) {
-    await this.renameProjectCommandHandler.handle(new RenameProjectCommand(id, 'New Name'));
+  async renameProject(@Args('id') id: string, @Args('name') name: string) {
+    await this.renameProjectCommandHandler.handle(new RenameProjectCommand(id, name));
     return id;
   }
 }
