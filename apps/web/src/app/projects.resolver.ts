@@ -7,8 +7,6 @@ import {
 } from '@simple-jira/domain-project';
 import { Project } from './read-models/project.model';
 
-/* eslint-disable no-unused-vars */
-/* eslint-disable class-methods-use-this */
 
 @Resolver((of) => Project)
 export class ProjectsResolver {
