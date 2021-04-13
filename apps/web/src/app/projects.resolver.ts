@@ -1,4 +1,6 @@
-import { Args, Mutation, Resolver } from '@nestjs/graphql';
+import {
+  Args, Mutation, Query, Resolver,
+} from '@nestjs/graphql';
 import {
   CreateProjectCommand,
   CreateProjectCommandHandler,
@@ -7,7 +9,6 @@ import {
 } from '@simple-jira/domain-project';
 import { Project } from './read-models/project.model';
 
-
 @Resolver((of) => Project)
 export class ProjectsResolver {
   constructor(
@@ -15,6 +16,10 @@ export class ProjectsResolver {
     private readonly renameProjectCommandHandler: RenameProjectCommandHandler,
   ) {}
 
+  @Query((returns) => String)
+  hello(): string {
+    return 'hello graphql';
+  }
 
   @Mutation((returns) => String)
   async addProject(@Args('id') id: string) {
