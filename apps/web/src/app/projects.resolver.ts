@@ -19,13 +19,6 @@ export class ProjectsResolver {
     private readonly renameProjectCommandHandler: RenameProjectCommandHandler,
   ) {}
 
-  @Query((returns) => Project)
-  project(): any {
-    const project = new Project();
-    project.id = 'abc';
-    project.name = 'some other name';
-    return project;
-  }
 
   @Mutation((returns) => String)
   async addProject(@Args('id') id: string) {
