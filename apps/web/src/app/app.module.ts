@@ -22,7 +22,6 @@ function getProviderConfig<T>(instance: T): { provide: string, useValue: T } {
   imports: [
     GraphQLModule.forRoot({
       autoSchemaFile: true,
-      path: 'projects',
     }),
   ],
 })
