@@ -20,9 +20,7 @@ function getProviderConfig<T>(instance: T): { provide: string, useValue: T } {
   controllers: [AppController],
   providers: [ProjectsResolver],
   imports: [
-    GraphQLModule.forRoot({
-      autoSchemaFile: true,
-    }),
+    GraphQLModule.forRoot({ autoSchemaFile: true }),
   ],
 })
 export class AppModule {
