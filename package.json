@@ -22,7 +22,8 @@
     "update": "nx migrate latest",
     "workspace-generator": "nx workspace-generator",
     "dep-graph": "nx dep-graph",
-    "help": "nx help"
+    "help": "nx help",
+    "postinstall": "node node_modules/@nx-plus/vue/patch-nx-dep-graph.js"
   },
   "private": true,
   "devDependencies": {
@@ -36,6 +37,7 @@
     "@nrwl/node": "11.5.2",
     "@nrwl/tao": "11.5.2",
     "@nrwl/workspace": "11.5.2",
+    "@nx-plus/vue": "^11.0.0",
     "@types/jest": "26.0.8",
     "@types/node": "12.12.38",
     "@typescript-eslint/eslint-plugin": "4.3.0",
