@@ -33,6 +33,9 @@
     },
     "domain-project": {
       "tags": []
+    },
+    "frontend": {
+      "tags": []
     }
   }
 }

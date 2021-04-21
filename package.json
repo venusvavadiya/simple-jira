@@ -22,13 +22,15 @@
     "update": "nx migrate latest",
     "workspace-generator": "nx workspace-generator",
     "dep-graph": "nx dep-graph",
-    "help": "nx help"
+    "help": "nx help",
+    "postinstall": "node node_modules/@nx-plus/vue/patch-nx-dep-graph.js"
   },
   "private": true,
   "devDependencies": {
     "@nestjs/schematics": "^7.0.0",
     "@nestjs/testing": "^7.0.0",
     "@nrwl/cli": "11.5.2",
+    "@nrwl/cypress": "^12.0.8",
     "@nrwl/eslint-plugin-nx": "11.5.2",
     "@nrwl/jest": "11.5.2",
     "@nrwl/linter": "11.5.2",
@@ -36,21 +38,35 @@
     "@nrwl/node": "11.5.2",
     "@nrwl/tao": "11.5.2",
     "@nrwl/workspace": "11.5.2",
+    "@nx-plus/vue": "^11.0.0",
     "@types/jest": "26.0.8",
     "@types/node": "12.12.38",
     "@typescript-eslint/eslint-plugin": "4.3.0",
     "@typescript-eslint/parser": "4.3.0",
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-typescript": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "@vue/eslint-config-typescript": "^5.0.2",
+    "@vue/test-utils": "^1.0.3",
+    "babel-core": "^7.0.0-bridge.0",
+    "cypress": "^6.0.1",
     "dotenv": "6.2.0",
     "eslint": "7.10.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-config-prettier": "^8.1.0",
     "eslint-import-resolver-typescript": "^2.4.0",
+    "eslint-plugin-cypress": "^2.10.3",
     "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-vue": "^7.8.0",
     "jest": "26.2.2",
+    "jest-serializer-vue": "^2.0.2",
+    "jest-transform-stub": "^2.0.0",
     "prettier": "^2.2.1",
     "ts-jest": "26.4.0",
     "ts-node": "~9.1.1",
-    "typescript": "~4.0.3"
+    "typescript": "~4.0.3",
+    "vue-jest": "^3.0.5",
+    "vue-template-compiler": "^2.6.11"
   },
   "dependencies": {
     "@eventstore/db-client": "^1.1.0",
@@ -59,10 +75,13 @@
     "@nestjs/platform-express": "^7.0.0",
     "@points-log/adapter-event-store-db": "^0.0.1",
     "@points-log/domain-core": "^0.0.3",
+    "core-js": "^3.6.5",
     "mongodb": "^3.6.5",
     "reflect-metadata": "^0.1.13",
     "rxjs": "~6.6.3",
     "tslib": "^2.0.0",
-    "uuid": "^8.3.2"
+    "uuid": "^8.3.2",
+    "vue": "^2.6.11",
+    "vue-router": "^3.2.0"
   }
 }
