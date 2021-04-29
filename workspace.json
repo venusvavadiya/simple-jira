@@ -3,52 +3,8 @@
   "cli": {
     "defaultCollection": "@nrwl/nest"
   },
-  "defaultProject": "web",
+  "defaultProject": "backend",
   "projects": {
-    "web": {
-      "root": "apps/web",
-      "sourceRoot": "apps/web/src",
-      "projectType": "application",
-      "prefix": "web",
-      "targets": {
-        "build": {
-          "executor": "@nrwl/node:build",
-          "outputs": [
-            "{options.outputPath}"
-          ],
-          "options": {
-            "outputPath": "dist/apps/web",
-            "main": "apps/web/src/main.ts",
-            "tsConfig": "apps/web/tsconfig.app.json",
-            "generatePackageJson": true
-          }
-        },
-        "serve": {
-          "executor": "@nrwl/node:execute",
-          "options": {
-            "buildTarget": "web:build"
-          }
-        },
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "apps/web/**/*.ts"
-            ]
-          }
-        },
-        "test": {
-          "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/apps/web"
-          ],
-          "options": {
-            "jestConfig": "apps/web/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
     "domain-project": {
       "root": "libs/domain-project",
       "sourceRoot": "libs/domain-project/src",
@@ -125,6 +81,50 @@
           ],
           "options": {
             "jestConfig": "apps/frontend/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "backend": {
+      "root": "apps/backend",
+      "sourceRoot": "apps/backend/src",
+      "projectType": "application",
+      "prefix": "backend",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/node:build",
+          "outputs": [
+            "{options.outputPath}"
+          ],
+          "options": {
+            "outputPath": "dist/apps/backend",
+            "main": "apps/backend/src/main.ts",
+            "tsConfig": "apps/backend/tsconfig.app.json",
+            "generatePackageJson": true
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "backend:build"
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/backend/**/*.ts"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/apps/backend"
+          ],
+          "options": {
+            "jestConfig": "apps/backend/jest.config.js",
             "passWithNoTests": true
           }
         }

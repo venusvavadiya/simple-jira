@@ -28,13 +28,13 @@
     }
   },
   "projects": {
-    "web": {
-      "tags": []
-    },
     "domain-project": {
       "tags": []
     },
     "frontend": {
+      "tags": []
+    },
+    "backend": {
       "tags": []
     }
   }
