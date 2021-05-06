@@ -7,6 +7,7 @@ import {
 } from '@simple-jira/domain-project';
 import { AppController } from './app.controller';
 import { ProjectAggregateMongoDBEventListener } from './project-aggregate-mongo-db.event-listener';
+import { MongoDbRepository } from './mongo-db-repository';
 
 function getProviderConfig<T>(instance: T): { provide: string, useValue: T } {
   const provide = instance.constructor.name;
@@ -21,11 +22,11 @@ export class AppModule {
   static register(
     eventStore: EventStore,
     eventSubscription: EventSubscription,
-    mongoDB,
+    mongoDBClient,
   ): DynamicModule {
-    const projectsCollection = mongoDB.collection('projects');
+    const projectRepository = new MongoDbRepository(mongoDBClient);
 
-    eventSubscription.register(new ProjectAggregateMongoDBEventListener(projectsCollection));
+    eventSubscription.register(new ProjectAggregateMongoDBEventListener(projectRepository));
 
     const projectAggRepo = new ProjectAggregateRepository(eventStore);
 
