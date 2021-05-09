@@ -3,13 +3,13 @@ import { ProjectCreatedV1Event, ProjectRenamedV1Event } from '@simple-jira/domai
 import { Project } from './entities/project';
 
 export class ProjectAggregateMongoDBEventListener implements EventListener {
-  eventTypePrefixes = ['ProjectAggregate']
+  eventTypePrefixes = ['ProjectAggregate'];
 
   constructor(private readonly mongoDBRepository) {}
 
   async on(event: Event) {
     const methodName = `on${event.type}`;
-    if (this[methodName]) await this[methodName](event);
+    if (this[methodName]) this[methodName](event);
   }
 
   async onProjectCreatedV1Event(event: ProjectCreatedV1Event) {
