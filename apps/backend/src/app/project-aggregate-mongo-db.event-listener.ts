@@ -9,19 +9,19 @@ export class ProjectAggregateMongoDBEventListener implements EventListener {
 
   async on(event: Event) {
     const methodName = `on${event.type}`;
-    if (this[methodName]) this[methodName](event);
+    if (this[methodName]) await this[methodName](event);
   }
 
   async onProjectCreatedV1Event(event: ProjectCreatedV1Event) {
     const id = event.data.projectId;
     const project = new Project(id);
-    await this.mongoDBRepository.create(project);
+    await this.mongoDBRepository.save(project);
   }
 
   async onProjectRenamedV1Event(event: ProjectRenamedV1Event) {
     const id = event.data.projectId;
     const name = event.data.projectName;
     const project = new Project(id, name);
-    await this.mongoDBRepository.update(project);
+    await this.mongoDBRepository.save(project);
   }
 }

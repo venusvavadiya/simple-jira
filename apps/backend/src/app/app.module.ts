@@ -7,7 +7,7 @@ import {
 } from '@simple-jira/domain-project';
 import { AppController } from './app.controller';
 import { ProjectAggregateMongoDBEventListener } from './project-aggregate-mongo-db.event-listener';
-import { MongoDbRepository } from './mongo-db-repository';
+import { MongoDbRepository } from './mongo-db-project-repository';
 
 function getProviderConfig<T>(instance: T): { provide: string, useValue: T } {
   const provide = instance.constructor.name;
