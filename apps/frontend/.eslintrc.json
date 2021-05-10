@@ -4,9 +4,6 @@
     "plugin:vue/essential",
     "@vue/typescript/recommended"
   ],
-  "ignorePatterns": [
-    "!**/*"
-  ],
   "rules": {
     "vue/new-line-between-multi-line-property": "error",
     "vue/next-tick-style": "error",
