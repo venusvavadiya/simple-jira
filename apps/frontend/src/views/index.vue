@@ -1,22 +1,20 @@
 <template>
-  <div>
-    <max-width class="my-12">
-      <v-card>
-        <v-list>
-          <v-list-item
-            v-for="project in projects"
-            :key="project.id"
-          >
-            <v-list-item-content>
-              <v-list-item-title>
-                {{ project.name }}
-              </v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
-        </v-list>
-      </v-card>
-    </max-width>
-  </div>
+  <max-width class="my-12">
+    <v-card>
+      <v-list>
+        <v-list-item
+          v-for="project in projects"
+          :key="project.id"
+        >
+          <v-list-item-content>
+            <v-list-item-title>
+              {{ project.name }}
+            </v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+    </v-card>
+  </max-width>
 </template>
 
 <script lang="ts">
