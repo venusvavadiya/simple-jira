@@ -2,7 +2,7 @@ import { EventListener, Event } from '@points-log/domain-core';
 import { ProjectCreatedV1Event, ProjectRenamedV1Event } from '@simple-jira/domain-project';
 import { Project } from './entities/project';
 
-// noinspection JSUnusedLocalSymbols
+// noinspection JSUnusedGlobalSymbols
 export class ProjectAggregateEventListener implements EventListener {
   eventTypePrefixes = ['ProjectAggregate'];
 
@@ -13,13 +13,13 @@ export class ProjectAggregateEventListener implements EventListener {
     if (this[methodName]) this[methodName](event);
   }
 
-  private async onProjectCreatedV1Event(event: ProjectCreatedV1Event) {
+  async onProjectCreatedV1Event(event: ProjectCreatedV1Event) {
     const id = event.data.projectId;
     const project = new Project(id);
     await this.mongoDBRepository.save(project);
   }
 
-  private async onProjectRenamedV1Event(event: ProjectRenamedV1Event) {
+  async onProjectRenamedV1Event(event: ProjectRenamedV1Event) {
     const id = event.data.projectId;
     const name = event.data.projectName;
     const project = new Project(id, name);
