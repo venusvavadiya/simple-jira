@@ -6,7 +6,7 @@ import {
   RenameProjectCommandHandler,
 } from '@simple-jira/domain-project';
 import { AppController } from './app.controller';
-import { ProjectAggregateMongoDBEventListener } from './project-aggregate-mongo-db.event-listener';
+import { ProjectAggregateEventListener } from './project-aggregate.event-listener';
 import { MongoDbProjectRepository } from './mongo-db-project-repository';
 
 function getProviderConfig<T>(instance: T): { provide: string, useValue: T } {
@@ -26,7 +26,7 @@ export class AppModule {
   ): DynamicModule {
     const projectRepository = new MongoDbProjectRepository(mongoDBClient);
 
-    eventSubscription.register(new ProjectAggregateMongoDBEventListener(projectRepository));
+    eventSubscription.register(new ProjectAggregateEventListener(projectRepository));
 
     const projectAggRepo = new ProjectAggregateRepository(eventStore);
 
