@@ -2,7 +2,7 @@ import { EventListener, Event } from '@points-log/domain-core';
 import { ProjectCreatedV1Event, ProjectRenamedV1Event } from '@simple-jira/domain-project';
 import { Project } from './entities/project';
 
-export class ProjectAggregateMongoDBEventListener implements EventListener {
+export class ProjectAggregateEventListener implements EventListener {
   eventTypePrefixes = ['ProjectAggregate'];
 
   constructor(private readonly mongoDBRepository) {}
