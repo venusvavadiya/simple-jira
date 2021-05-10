@@ -5,9 +5,10 @@ import {
   ProjectAggregateRepository,
   RenameProjectCommandHandler,
 } from '@simple-jira/domain-project';
+import { Db as MongoDB } from 'mongodb';
 import { AppController } from './app.controller';
 import { ProjectAggregateEventListener } from './project-aggregate.event-listener';
-import { MongoDbProjectRepository } from './mongo-db-project-repository';
+import { MongoDBProjectRepository } from './mongo-db-project-repository';
 
 function getProviderConfig<T>(instance: T): { provide: string, useValue: T } {
   const provide = instance.constructor.name;
@@ -22,9 +23,9 @@ export class AppModule {
   static register(
     eventStore: EventStore,
     eventSubscription: EventSubscription,
-    mongoDBClient,
+    mongoDB: MongoDB,
   ): DynamicModule {
-    const projectRepository = new MongoDbProjectRepository(mongoDBClient);
+    const projectRepository = new MongoDBProjectRepository(mongoDB);
 
     eventSubscription.register(new ProjectAggregateEventListener(projectRepository));
 

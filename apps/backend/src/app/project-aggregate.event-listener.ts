@@ -2,6 +2,7 @@ import { EventListener, Event } from '@points-log/domain-core';
 import { ProjectCreatedV1Event, ProjectRenamedV1Event } from '@simple-jira/domain-project';
 import { Project } from './entities/project';
 
+// noinspection JSUnusedGlobalSymbols
 export class ProjectAggregateEventListener implements EventListener {
   eventTypePrefixes = ['ProjectAggregate'];
 

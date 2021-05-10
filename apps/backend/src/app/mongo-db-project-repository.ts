@@ -1,11 +1,12 @@
+import { Collection, Db as MongoDB } from 'mongodb';
 import { Project } from './entities/project';
 import { ProjectRepository } from './repositories/project-repository';
 
-export class MongoDbProjectRepository implements ProjectRepository {
-  private readonly collection;
+export class MongoDBProjectRepository implements ProjectRepository {
+  private readonly collection: Collection;
 
-  constructor(client) {
-    this.collection = client.collection('projects');
+  constructor(db: MongoDB) {
+    this.collection = db.collection('projects');
   }
 
   async existsById(projectId: string) {
@@ -14,8 +15,9 @@ export class MongoDbProjectRepository implements ProjectRepository {
   }
 
   async save(project: Project) {
-    const filter = { _id: project.id };
-    const update = { $set: { name: project.name } };
-    await this.collection.updateOne(filter, update, { upsert: true });
+    const filterQuery = { _id: project.id };
+    const updateQuery = { $set: { name: project.name } };
+    const options = { upsert: true };
+    await this.collection.updateOne(filterQuery, updateQuery, options);
   }
 }
