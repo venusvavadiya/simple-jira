@@ -16,7 +16,7 @@
             <v-list-item-action>
               <v-btn icon>
                 <v-icon>
-                  mdi-information
+                  {{ 'mdi-information' }}
                 </v-icon>
               </v-btn>
             </v-list-item-action>

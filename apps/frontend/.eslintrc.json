@@ -7,31 +7,6 @@
   "ignorePatterns": [
     "!**/*"
   ],
-  "overrides": [
-    {
-      "files": [
-        "*.ts",
-        "*.tsx",
-        "*.js",
-        "*.jsx",
-        "*.vue"
-      ],
-      "parserOptions": {
-        "project": [
-          "apps/frontend/tsconfig.*?.json"
-        ]
-      },
-      "rules": {}
-    },
-    {
-      "files": [
-        "**/*.spec.{j,t}s?(x)"
-      ],
-      "env": {
-        "jest": true
-      }
-    }
-  ],
   "rules": {
     "vue/new-line-between-multi-line-property": "error",
     "vue/next-tick-style": "error",
@@ -54,8 +29,5 @@
     "vue/v-on-event-hyphenation": "error",
     "vue/v-on-function-call": "error",
     "vue/valid-next-tick": "error"
-  },
-  "env": {
-    "node": true
   }
 }

@@ -12,13 +12,15 @@ export class ProjectAggregateEventListener implements EventListener {
     if (this[methodName]) this[methodName](event);
   }
 
-  async onProjectCreatedV1Event(event: ProjectCreatedV1Event) {
+  // noinspection JSUnusedLocalSymbols
+  private async onProjectCreatedV1Event(event: ProjectCreatedV1Event) {
     const id = event.data.projectId;
     const project = new Project(id);
     await this.mongoDBRepository.save(project);
   }
 
-  async onProjectRenamedV1Event(event: ProjectRenamedV1Event) {
+  // noinspection JSUnusedLocalSymbols
+  private async onProjectRenamedV1Event(event: ProjectRenamedV1Event) {
     const id = event.data.projectId;
     const name = event.data.projectName;
     const project = new Project(id, name);

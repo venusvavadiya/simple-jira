@@ -2,6 +2,7 @@ import { Aggregate } from '@points-log/domain-core';
 import { ProjectCreatedV1Event } from '../event/project-created.event';
 import { ProjectRenamedV1Event } from '../event/project-renamed.event';
 
+// noinspection JSUnusedGlobalSymbols
 export class ProjectAggregate extends Aggregate {
   name: string
 
@@ -14,8 +15,6 @@ export class ProjectAggregate extends Aggregate {
     const event = new ProjectRenamedV1Event(this.id, name);
     this.raiseEvent(event);
   }
-
-  // Events
 
   applyProjectCreatedV1Event(event: ProjectCreatedV1Event) {
     this.id = event.data.projectId;
