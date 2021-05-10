@@ -28,7 +28,7 @@ export default Vue.extend({
 
   data() {
     return {
-       projects: [
+      projects: [
         { id: 'id1', name: 'Project 1' },
         { id: 'id2', name: 'Project 2' },
       ],
