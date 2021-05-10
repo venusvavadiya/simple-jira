@@ -40,6 +40,7 @@
     "@nrwl/workspace": "11.5.2",
     "@nx-plus/vue": "^11.0.0",
     "@types/jest": "26.0.8",
+    "@types/mongodb": "^3.6.12",
     "@types/node": "12.12.38",
     "@types/uuid": "^8.3.0",
     "@typescript-eslint/eslint-plugin": "4.3.0",
