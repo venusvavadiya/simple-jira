@@ -10,7 +10,7 @@ export class ProjectAggregateEventListener implements EventListener {
 
   async on(event: Event) {
     const methodName = `on${event.type}`;
-    if (this[methodName]) this[methodName](event);
+    if (this[methodName]) await this[methodName](event);
   }
 
   async onProjectCreatedV1Event(event: ProjectCreatedV1Event) {
