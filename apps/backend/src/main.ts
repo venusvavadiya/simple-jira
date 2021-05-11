@@ -4,12 +4,6 @@ import { EventStoreDBEventStore, EventStoreDBEventSubscription } from '@points-l
 import { MongoClient } from 'mongodb';
 import { AppModule } from './app/app.module';
 
-const environment = {
-  eventStoreDBUrl: 'esdb://localhost:2113?tls=false',
-  mongoDBUrl: 'mongodb://root:root@localhost:27017',
-  port: 8000,
-};
-
 async function getMongoDBClient(url: string): Promise<MongoClient> {
   const useNewUrlParser = true;
   const useUnifiedTopology = true;
@@ -19,7 +13,7 @@ async function getMongoDBClient(url: string): Promise<MongoClient> {
   return client;
 }
 
-async function bootstrap() {
+async function bootstrap(environment) {
   const { eventStoreDBUrl, mongoDBUrl, port } = environment;
   const eventStoreDBClient = EventStoreDBClient.connectionString(eventStoreDBUrl);
   const mongoDBClient = await getMongoDBClient(mongoDBUrl);
@@ -32,4 +26,10 @@ async function bootstrap() {
   await app.listen(port);
 }
 
-bootstrap().then();
+const environment = {
+  eventStoreDBUrl: 'esdb://localhost:2113?tls=false',
+  mongoDBUrl: 'mongodb://root:root@localhost:27017',
+  port: 8000,
+};
+
+bootstrap(environment).then();
