@@ -11,9 +11,51 @@
               {{ project.name }}
             </v-list-item-title>
           </v-list-item-content>
+
+          <v-list-item-action>
+            <v-btn
+              icon
+              @click="dialog = true"
+            >
+              <v-icon>
+                {{ 'mdi-pencil' }}
+              </v-icon>
+            </v-btn>
+          </v-list-item-action>
         </v-list-item>
       </v-list>
     </v-card>
+
+    <v-dialog
+      v-model="dialog"
+      :max-width="$vuetify.breakpoint.thresholds.xs"
+      persistent
+    >
+      <v-card>
+        <v-card-title>
+          {{ 'Rename' }}
+        </v-card-title>
+
+        <v-card-text>
+          <v-text-field
+            outlined
+            label="Name"
+            hide-details="auto"
+          />
+        </v-card-text>
+
+        <v-card-actions>
+          <v-spacer/>
+
+          <v-btn
+            text
+            @click="dialog = false"
+          >
+            {{ 'Cancel' }}
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
   </max-width>
 </template>
 
@@ -26,6 +68,8 @@ export default Vue.extend({
 
   data() {
     return {
+      dialog: true,
+
       projects: [
         { id: 'id1', name: 'Project 1' },
         { id: 'id2', name: 'Project 2' },
