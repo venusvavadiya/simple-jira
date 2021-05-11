@@ -1817,15 +1817,20 @@
     tsconfig-paths-webpack-plugin "3.3.0"
     typescript "4.0.3"
 
-"@points-log/adapter-event-store-db@^0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@points-log/adapter-event-store-db/-/adapter-event-store-db-0.0.1.tgz#202c1982554b43620089bc3683fb161ecf1073ed"
-  integrity sha512-6tmqgac15y2aCyZcWJaqhQKaGLOhNhFMUPnD7n9Bm7M0f7B4MyUoxdlVJiopP/nNq1fPiUgUxvp+BusLOAl9Vg==
+"@points-log/adapter-event-store-db@^0.0.3":
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/@points-log/adapter-event-store-db/-/adapter-event-store-db-0.0.3.tgz#ceefd89cb2a926a83b74e1d0027f1c26ded53c9f"
+  integrity sha512-hYozQ/qQbMsHtsult8c56i56L3nip6dmhBionzvQxeq7u2JDf8ObvemFFeaKsnAd/O2qvn4qchoTtL8YWaiRAg==
   dependencies:
     "@eventstore/db-client" "^1.1.0"
-    "@points-log/domain-core" "0.0.3"
+    "@points-log/domain-core" "0.0.2"
 
-"@points-log/domain-core@0.0.3", "@points-log/domain-core@^0.0.3":
+"@points-log/domain-core@0.0.2":
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@points-log/domain-core/-/domain-core-0.0.2.tgz#b231afa54557e0ba3c594ec4300a236b32b5b030"
+  integrity sha512-lMBPqP2YlvgInWV5iawMUL/4sOz+UYdLh+UDMP6yOcnwFly5TDSuSDfHeo13jB/C3uSwMPzOdF2Fb18wsYHAAA==
+
+"@points-log/domain-core@^0.0.3":
   version "0.0.3"
   resolved "https://registry.yarnpkg.com/@points-log/domain-core/-/domain-core-0.0.3.tgz#1c3a00d4880a66da40889ef4dfa81de873eba86c"
   integrity sha512-O26k5U/1SU3mK3oCS5nYOSizHDPK3afy9chPio8x3yWxu7X39d0v/eLjcI8X3lGJU0UZ+28iYWOwtGdMdGglgA==

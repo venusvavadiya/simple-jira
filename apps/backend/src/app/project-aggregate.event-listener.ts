@@ -6,23 +6,23 @@ import { Project } from './entities/project';
 export class ProjectAggregateEventListener implements EventListener {
   eventTypePrefixes = ['ProjectAggregate'];
 
-  constructor(private readonly mongoDBRepository) {}
+  constructor(private readonly projectRepository) {}
 
   async on(event: Event) {
     const methodName = `on${event.type}`;
-    if (this[methodName]) this[methodName](event);
+    if (this[methodName]) await this[methodName](event);
   }
 
   async onProjectCreatedV1Event(event: ProjectCreatedV1Event) {
     const id = event.data.projectId;
     const project = new Project(id);
-    await this.mongoDBRepository.save(project);
+    await this.projectRepository.save(project);
   }
 
   async onProjectRenamedV1Event(event: ProjectRenamedV1Event) {
     const id = event.data.projectId;
     const name = event.data.projectName;
     const project = new Project(id, name);
-    await this.mongoDBRepository.save(project);
+    await this.projectRepository.save(project);
   }
 }
