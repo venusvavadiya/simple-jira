@@ -31,30 +31,7 @@
       :max-width="$vuetify.breakpoint.thresholds.xs"
       persistent
     >
-      <v-card>
-        <v-card-title>
-          {{ 'Rename' }}
-        </v-card-title>
-
-        <v-card-text>
-          <v-text-field
-            outlined
-            label="Name"
-            hide-details="auto"
-          />
-        </v-card-text>
-
-        <v-card-actions>
-          <v-spacer/>
-
-          <v-btn
-            text
-            @click="dialog = false"
-          >
-            {{ 'Cancel' }}
-          </v-btn>
-        </v-card-actions>
-      </v-card>
+      <rename-project-form />
     </v-dialog>
   </max-width>
 </template>
@@ -62,9 +39,13 @@
 <script lang="ts">
 import Vue from 'vue';
 import MaxWidth from '../components/max-width.vue';
+import RenameProjectForm from '../domain-project/components/rename-project-form.vue';
 
 export default Vue.extend({
-  components: { MaxWidth },
+  components: {
+    MaxWidth,
+    RenameProjectForm,
+  },
 
   data() {
     return {
