@@ -4,8 +4,8 @@ import { ProjectEntity, ProjectReadRepository } from '@simple-jira/domain-projec
 export class MongoDBProjectReadRepository implements ProjectReadRepository {
   private readonly collection: Collection;
 
-  constructor(db: MongoDB) {
-    this.collection = db.collection('projects');
+  constructor(mongoDB: MongoDB) {
+    this.collection = mongoDB.collection('projects');
   }
 
   async save(projectEntity: ProjectEntity) {
