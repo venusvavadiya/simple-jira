@@ -26,14 +26,13 @@ export class AppModule {
     mongoDB: MongoDB,
   ): DynamicModule {
     const projectReadRepository = new MongoDBProjectReadRepository(mongoDB);
-
     eventSubscription.register(new ProjectAggregateEventListener(projectReadRepository));
 
-    const projectAggRepo = new ProjectAggregateRepository(eventStore);
+    const projectAggregateRepository = new ProjectAggregateRepository(eventStore);
 
     const providers = [
-      getProviderConfig(new CreateProjectCommandHandler(projectAggRepo)),
-      getProviderConfig(new RenameProjectCommandHandler(projectAggRepo)),
+      getProviderConfig(new CreateProjectCommandHandler(projectAggregateRepository)),
+      getProviderConfig(new RenameProjectCommandHandler(projectAggregateRepository)),
     ];
 
     return { module: AppModule, providers };

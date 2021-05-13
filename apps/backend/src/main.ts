@@ -7,22 +7,19 @@ import {
 import { MongoClient } from 'mongodb';
 import { AppModule } from './app/app.module';
 
-const environment = {
-  eventStoreDBUrl: 'esdb://localhost:2113?tls=false',
-  mongoDBUrl: 'mongodb://root:root@localhost:27017',
-  port: 8000,
-};
-
-async function bootstrap() {
-  const { eventStoreDBUrl, mongoDBUrl, port } = environment;
-
+async function getMongoDBClient(url: string): Promise<MongoClient> {
   const useNewUrlParser = true;
   const useUnifiedTopology = true;
-  const mongoDBConfig = { useNewUrlParser, useUnifiedTopology };
-  const mongoDBClient = new MongoClient(mongoDBUrl, mongoDBConfig);
-  await mongoDBClient.connect();
+  const config = { useNewUrlParser, useUnifiedTopology };
+  const client = new MongoClient(url, config);
+  await client.connect();
+  return client;
+}
 
+async function bootstrap(environment) {
+  const { eventStoreDBUrl, mongoDBUrl, port } = environment;
   const eventStoreDBClient = EventStoreDBClient.connectionString(eventStoreDBUrl);
+  const mongoDBClient = await getMongoDBClient(mongoDBUrl);
 
   const app = await NestFactory.create(AppModule.register(
     new EventStoreDBEventStore(eventStoreDBClient),
@@ -32,4 +29,10 @@ async function bootstrap() {
   await app.listen(port);
 }
 
-bootstrap().then();
+const environment = {
+  eventStoreDBUrl: 'esdb://localhost:2113?tls=false',
+  mongoDBUrl: 'mongodb://root:root@localhost:27017',
+  port: 8000,
+};
+
+bootstrap(environment).then();

@@ -8,7 +8,7 @@ import { ProjectReadRepository } from '../read-repository/project.read-repositor
 export class ProjectAggregateEventListener implements EventListener {
   eventTypePrefixes = ['ProjectAggregate'];
 
-  constructor(private readonly projectRepository: ProjectReadRepository) {}
+  constructor(private readonly projectReadRepository: ProjectReadRepository) {}
 
   async on(event: Event) {
     const methodName = `on${event.type}`;
@@ -18,13 +18,13 @@ export class ProjectAggregateEventListener implements EventListener {
   async onProjectCreatedV1Event(event: ProjectCreatedV1Event) {
     const id = event.data.projectId;
     const projectEntity = new ProjectEntity(id);
-    await this.projectRepository.save(projectEntity);
+    await this.projectReadRepository.save(projectEntity);
   }
 
   async onProjectRenamedV1Event(event: ProjectRenamedV1Event) {
     const id = event.data.projectId;
     const name = event.data.projectName;
     const projectEntity = new ProjectEntity(id, name);
-    await this.projectRepository.save(projectEntity);
+    await this.projectReadRepository.save(projectEntity);
   }
 }

@@ -17,8 +17,13 @@ export class AppController {
   @Get()
   async getData() {
     const id = uuidv4();
-    await this.createProjectCommandHandler.handle(new CreateProjectCommand(id));
-    await this.renameProjectCommandHandler.handle(new RenameProjectCommand(id, 'New Name'));
+
+    const createProjectCommand = new CreateProjectCommand(id);
+    await this.createProjectCommandHandler.handle(createProjectCommand);
+
+    const renameProjectCommand = new RenameProjectCommand(id, 'New Name');
+    await this.renameProjectCommandHandler.handle(renameProjectCommand);
+
     return { id };
   }
 }
