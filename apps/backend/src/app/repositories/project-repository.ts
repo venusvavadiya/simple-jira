@@ -1,6 +1,5 @@
 import { Project } from '../entities/project';
 
-export declare interface ProjectRepository {
-  existsById(projectId: string): Promise<boolean>;
+export interface ProjectRepository {
   save(project: Project): Promise<void>;
 }

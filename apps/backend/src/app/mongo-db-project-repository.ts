@@ -9,11 +9,6 @@ export class MongoDBProjectRepository implements ProjectRepository {
     this.collection = db.collection('projects');
   }
 
-  async existsById(projectId: string) {
-    const project = await this.collection.findOne({ _id: projectId });
-    return Boolean(project);
-  }
-
   async save(project: Project) {
     const filterQuery = { _id: project.id };
     const updateQuery = { $set: { name: project.name } };
