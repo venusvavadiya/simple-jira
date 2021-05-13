@@ -1,47 +1,23 @@
 <template>
   <pl-max-width class="my-12">
-    <v-card>
-      <v-list>
-        <v-list-item
-          v-for="project in projects"
-          :key="project.id"
-        >
-          <v-list-item-content>
-            <v-list-item-title>
-              {{ project.name }}
-            </v-list-item-title>
-          </v-list-item-content>
+    <project-list :projects="projects" />
 
-          <v-list-item-action>
-            <v-btn
-              icon
-              @click="dialog = true"
-            >
-              <v-icon>
-                {{ 'mdi-pencil' }}
-              </v-icon>
-            </v-btn>
-          </v-list-item-action>
-        </v-list-item>
-      </v-list>
-    </v-card>
-
-    <v-dialog
-      v-model="dialog"
-      :max-width="$vuetify.breakpoint.thresholds.xs"
-      persistent
-    >
-      <rename-project-form />
-    </v-dialog>
+    <pl-dialog v-model="dialog">
+      <project-rename-form @cancel="dialog = false" />
+    </pl-dialog>
   </pl-max-width>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import RenameProjectForm from '../components/rename-project-form.vue';
+import ProjectList from '../components/project-list.vue';
+import ProjectRenameForm from '../components/project-rename-form.vue';
 
 export default Vue.extend({
-  components: { RenameProjectForm },
+  components: {
+    ProjectList,
+    ProjectRenameForm,
+  },
 
   data() {
     return {
