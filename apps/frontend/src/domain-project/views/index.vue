@@ -1,11 +1,9 @@
-<template>
-  <pl-max-width class="my-12">
-    <project-list :projects="projects" />
+<template lang="pug">
+  pl-max-width(class="my-12")
+    project-list(:projects="projects")
 
-    <pl-dialog v-model="dialog">
-      <project-rename-form @cancel="dialog = false" />
-    </pl-dialog>
-  </pl-max-width>
+    pl-dialog(v-model="dialog")
+      project-rename-form(@cancel="dialog = false")
 </template>
 
 <script lang="ts">

@@ -1,10 +1,9 @@
-<template>
-  <v-dialog
-    :max-width="$vuetify.breakpoint.thresholds.xs"
+<template lang="pug">
+  v-dialog(
+    :maxWidth='$vuetify.breakpoint.thresholds.xs'
     persistent
     v-bind="$attrs"
     v-on="$listeners"
-  >
-    <slot />
-  </v-dialog>
+  )
+    slot
 </template>
