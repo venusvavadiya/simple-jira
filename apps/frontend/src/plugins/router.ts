@@ -6,10 +6,8 @@ Vue.use(VueRouter);
 
 const routes = [...ProjectRoutes];
 
-const router = new VueRouter({
+export default new VueRouter({
   base: process.env.BASE_URL,
   mode: 'history',
   routes,
 });
-
-export default router;
