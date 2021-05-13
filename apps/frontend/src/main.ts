@@ -3,11 +3,11 @@ import Vuetify from 'vuetify';
 import 'vuetify/dist/vuetify.min.css';
 import App from './App.vue';
 import router from './router';
-import PLCancelBtn from './components/pl-cancel-btn.vue';
-import PLCardTitle from './components/pl-card-title.vue';
-import PLDoneBtn from './components/pl-done-btn.vue';
-import PLMaxWidth from './components/pl-max-width.vue';
-import PLTextField from './components/pl-text-field.vue';
+import PLCancelBtn from './vue-core/components/pl-cancel-btn.vue';
+import PLCardTitle from './vue-core/components/pl-card-title.vue';
+import PLDoneBtn from './vue-core/components/pl-done-btn.vue';
+import PLMaxWidth from './vue-core/components/pl-max-width.vue';
+import PLTextField from './vue-core/components/pl-text-field.vue';
 
 Vue.use(Vuetify);
 
