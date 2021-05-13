@@ -38,7 +38,7 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import RenameProjectForm from '../domain-project/components/rename-project-form.vue';
+import RenameProjectForm from '../components/rename-project-form.vue';
 
 export default Vue.extend({
   components: { RenameProjectForm },

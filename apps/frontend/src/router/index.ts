@@ -1,16 +1,10 @@
 import Vue from 'vue';
-import VueRouter, { RouteConfig } from 'vue-router';
-import Index from '../views/index.vue';
+import VueRouter from 'vue-router';
+import ProjectRoutes from '../domain-project/routes';
 
 Vue.use(VueRouter);
 
-const routes: Array<RouteConfig> = [
-  {
-    component: Index,
-    name: 'Index',
-    path: '/',
-  },
-];
+const routes = [...ProjectRoutes];
 
 const router = new VueRouter({
   base: process.env.BASE_URL,
