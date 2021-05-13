@@ -1,5 +1,5 @@
 <template>
-  <max-width class="my-12">
+  <pl-max-width class="my-12">
     <v-card>
       <v-list>
         <v-list-item
@@ -33,17 +33,17 @@
     >
       <rename-project-form />
     </v-dialog>
-  </max-width>
+  </pl-max-width>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import MaxWidth from '../components/max-width.vue';
+import PLMaxWidth from '../components/pl-max-width.vue';
 import RenameProjectForm from '../domain-project/components/rename-project-form.vue';
 
 export default Vue.extend({
   components: {
-    MaxWidth,
+    'pl-max-width': PLMaxWidth,
     RenameProjectForm,
   },
 
