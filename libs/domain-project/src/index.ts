@@ -15,4 +15,4 @@ export * from './event/project-renamed.event';
 
 export * from './event-listener/project-aggregate.event-listener';
 
-export * from './read-repository/project.read-repository';
+export * from './entity-repository/project.entity-repository';

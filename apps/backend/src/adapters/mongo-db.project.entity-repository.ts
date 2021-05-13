@@ -1,7 +1,7 @@
 import { Collection, Db as MongoDB } from 'mongodb';
-import { ProjectEntity, ProjectReadRepository } from '@simple-jira/domain-project';
+import { ProjectEntity, ProjectEntityRepository } from '@simple-jira/domain-project';
 
-export class MongoDBProjectReadRepository implements ProjectReadRepository {
+export class MongoDBProjectEntityRepository implements ProjectEntityRepository {
   private readonly collection: Collection;
 
   constructor(mongoDB: MongoDB) {

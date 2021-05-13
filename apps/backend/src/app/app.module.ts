@@ -8,7 +8,7 @@ import {
 } from '@simple-jira/domain-project';
 import { Db as MongoDB } from 'mongodb';
 import { AppController } from './app.controller';
-import { MongoDBProjectReadRepository } from '../adapters/mongo-db.project.read-repository';
+import { MongoDBProjectEntityRepository } from '../adapters/mongo-db.project.entity-repository';
 
 function getProviderConfig<T>(instance: T): { provide: string, useValue: T } {
   const provide = instance.constructor.name;
@@ -25,8 +25,8 @@ export class AppModule {
     eventSubscription: EventSubscription,
     mongoDB: MongoDB,
   ): DynamicModule {
-    const projectReadRepository = new MongoDBProjectReadRepository(mongoDB);
-    eventSubscription.register(new ProjectAggregateEventListener(projectReadRepository));
+    const projectEntityRepository = new MongoDBProjectEntityRepository(mongoDB);
+    eventSubscription.register(new ProjectAggregateEventListener(projectEntityRepository));
 
     const projectAggregateRepository = new ProjectAggregateRepository(eventStore);
 
