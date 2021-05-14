@@ -9,7 +9,7 @@
     pl-dialog(v-model="projectDialog.isOpen")
       project-rename-form(
         :loading="projectDialog.isDoneLoading"
-        :project="projectDialog"
+        :project="projectDialog.project"
         @cancel="closeProjectDialog"
         @done="handleProjectRenameFormDone"
       )
