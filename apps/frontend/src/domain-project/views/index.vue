@@ -3,13 +3,13 @@
     project-list(
       :loading="loadingProjects"
       :projects="projects"
-      @rename="handleProjectRename"
+      @rename="openProjectDialog"
     )
 
-    pl-dialog(v-model="projectDialog.show")
+    pl-dialog(v-model="projectDialog.isOpen")
       project-rename-form(
         :project="projectDialog.project"
-        @cancel="handleProjectRenameFormCancel"
+        @cancel="closeProjectDialog"
         @done="handleProjectRenameFormDone"
       )
 </template>
@@ -30,7 +30,7 @@ export default Vue.extend({
   data() {
     return {
       projectDialog: {
-        show: false,
+        isOpen: false,
         project: {},
       },
 
@@ -50,21 +50,20 @@ export default Vue.extend({
       this.loadingProjects = false;
     },
 
-    handleProjectRename(project) {
-      this.projectDialog.show = true;
-      this.projectDialog.project = project;
-    },
-
-    handleProjectRenameFormCancel() {
-      this.projectDialog.show = false;
-      this.projectDialog.project = {};
-    },
-
     async handleProjectRenameFormDone(project) {
-      this.projectDialog.show = false;
-      this.projectDialog.project = {};
       await this.projectRepository.save(project);
+      this.closeProjectDialog();
       await this.loadProjects();
+    },
+
+    closeProjectDialog() {
+      this.projectDialog.isOpen = false;
+      this.projectDialog.project = {};
+    },
+
+    openProjectDialog(project) {
+      this.projectDialog.isOpen = true;
+      this.projectDialog.project = project;
     },
   },
 });

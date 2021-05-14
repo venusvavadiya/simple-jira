@@ -16,11 +16,20 @@ let PROJECTS = [
 
 const projectRepository = {
   async getAll() {
-    return Promise.resolve(PROJECTS);
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(PROJECTS);
+      }, 2000);
+    });
   },
 
   async save(project) {
-    PROJECTS = PROJECTS.map((p) => (p.id === project.id ? project : p));
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        PROJECTS = PROJECTS.map((p) => (p.id === project.id ? project : p));
+        resolve();
+      }, 2000);
+    });
   },
 };
 
