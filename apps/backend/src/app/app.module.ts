@@ -2,13 +2,13 @@ import { DynamicModule, Module } from '@nestjs/common';
 import { EventStore, EventSubscription } from '@points-log/domain-core';
 import {
   CreateProjectCommandHandler,
+  ProjectAggregateEventListener,
   ProjectAggregateRepository,
   RenameProjectCommandHandler,
 } from '@simple-jira/domain-project';
 import { Db as MongoDB } from 'mongodb';
 import { AppController } from './app.controller';
-import { ProjectAggregateEventListener } from './project-aggregate.event-listener';
-import { MongoDBProjectRepository } from './mongo-db-project-repository';
+import { MongoDBProjectEntityRepository } from '../adapters/mongo-db.project.entity-repository';
 
 function getProviderConfig<T>(instance: T): { provide: string, useValue: T } {
   const provide = instance.constructor.name;
@@ -25,15 +25,14 @@ export class AppModule {
     eventSubscription: EventSubscription,
     mongoDB: MongoDB,
   ): DynamicModule {
-    const projectRepository = new MongoDBProjectRepository(mongoDB);
+    const projectEntityRepository = new MongoDBProjectEntityRepository(mongoDB);
+    eventSubscription.register(new ProjectAggregateEventListener(projectEntityRepository));
 
-    eventSubscription.register(new ProjectAggregateEventListener(projectRepository));
-
-    const projectAggRepo = new ProjectAggregateRepository(eventStore);
+    const projectAggregateRepository = new ProjectAggregateRepository(eventStore);
 
     const providers = [
-      getProviderConfig(new CreateProjectCommandHandler(projectAggRepo)),
-      getProviderConfig(new RenameProjectCommandHandler(projectAggRepo)),
+      getProviderConfig(new CreateProjectCommandHandler(projectAggregateRepository)),
+      getProviderConfig(new RenameProjectCommandHandler(projectAggregateRepository)),
     ];
 
     return { module: AppModule, providers };
