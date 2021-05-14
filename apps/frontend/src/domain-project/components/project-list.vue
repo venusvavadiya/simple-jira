@@ -1,5 +1,5 @@
 <template lang="pug">
-  v-card
+  v-card(:loading="loading")
     v-list
       v-list-item(
         v-for="project in projects"
@@ -21,6 +21,10 @@ import Vue from 'vue';
 
 export default Vue.extend({
   props: {
+    loading: {
+      type: Boolean,
+    },
+
     projects: {
       required: true,
       type: Array,

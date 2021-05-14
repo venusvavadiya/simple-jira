@@ -1,6 +1,7 @@
 <template lang="pug">
   pl-max-width(class="my-12")
     project-list(
+      :loading="loadingProjects"
       :projects="projects"
       @rename="handleProjectRename"
     )
@@ -24,6 +25,8 @@ export default Vue.extend({
     ProjectRenameForm,
   },
 
+  inject: ['projectRepository'],
+
   data() {
     return {
       projectDialog: {
@@ -31,14 +34,22 @@ export default Vue.extend({
         project: {},
       },
 
-      projects: [
-        { id: 'id1', name: 'Project 1' },
-        { id: 'id2', name: 'Project 2' },
-      ],
+      loadingProjects: false,
+      projects: [],
     };
   },
 
+  async mounted() {
+    await this.loadProjects();
+  },
+
   methods: {
+    async loadProjects() {
+      this.loadingProjects = true;
+      this.projects = await this.projectRepository.getAll();
+      this.loadingProjects = false;
+    },
+
     handleProjectRename(project) {
       this.projectDialog.show = true;
       this.projectDialog.project = project;
@@ -49,10 +60,11 @@ export default Vue.extend({
       this.projectDialog.project = {};
     },
 
-    handleProjectRenameFormDone(project) {
+    async handleProjectRenameFormDone(project) {
       this.projectDialog.show = false;
       this.projectDialog.project = {};
-      this.projects = this.projects.map((p) => (p.id === project.id ? project : p));
+      await this.projectRepository.save(project);
+      await this.loadProjects();
     },
   },
 });
