@@ -1,13 +1,14 @@
 <template lang="pug">
   pl-max-width(class="my-12")
     project-list(
-      :loading="loadingProjects"
+      :loading="isProjectsLoading"
       :projects="projects"
       @rename="openProjectDialog"
     )
 
     pl-dialog(v-model="projectDialog.isOpen")
       project-rename-form(
+        :loading="projectDialog.isDoneLoading"
         :project="projectDialog.project"
         @cancel="closeProjectDialog"
         @done="handleProjectRenameFormDone"
@@ -29,12 +30,14 @@ export default Vue.extend({
 
   data() {
     return {
+      isProjectsLoading: false,
+
       projectDialog: {
+        isDoneLoading: false,
         isOpen: false,
         project: {},
       },
 
-      loadingProjects: false,
       projects: [],
     };
   },
@@ -45,13 +48,15 @@ export default Vue.extend({
 
   methods: {
     async loadProjects() {
-      this.loadingProjects = true;
+      this.isProjectsLoading = true;
       this.projects = await this.projectRepository.getAll();
-      this.loadingProjects = false;
+      this.isProjectsLoading = false;
     },
 
     async handleProjectRenameFormDone(project) {
+      this.projectDialog.isDoneLoading = true;
       await this.projectRepository.save(project);
+      this.projectDialog.isDoneLoading = false;
       this.closeProjectDialog();
       await this.loadProjects();
     },

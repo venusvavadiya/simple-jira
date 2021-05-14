@@ -12,7 +12,7 @@
       v-card-actions
         v-spacer
         pl-cancel-btn(@click="handleCancelBtnClick")
-        pl-done-btn
+        pl-done-btn(:loading="loading")
 </template>
 
 <script lang="ts">
@@ -20,6 +20,10 @@ import Vue from 'vue';
 
 export default Vue.extend({
   props: {
+    loading: {
+      type: Boolean,
+    },
+
     project: {
       required: true,
       type: Object,
