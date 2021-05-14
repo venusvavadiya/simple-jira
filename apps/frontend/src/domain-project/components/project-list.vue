@@ -1,5 +1,7 @@
 <template lang="pug">
   v-card(:loading="loading")
+    v-card-title {{ 'Projects' }}
+
     v-list
       v-list-item(
         v-for="project in projects"
