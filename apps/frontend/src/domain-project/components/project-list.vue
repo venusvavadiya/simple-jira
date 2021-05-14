@@ -9,7 +9,10 @@
           v-list-item-title {{ project.name }}
 
         v-list-item-action
-          v-btn(icon)
+          v-btn(
+            icon
+            @click="handleEditClick(project)"
+          )
             v-icon {{ 'mdi-pencil' }}
 </template>
 
@@ -21,6 +24,12 @@ export default Vue.extend({
     projects: {
       required: true,
       type: Array,
+    },
+  },
+
+  methods: {
+    handleEditClick(project) {
+      this.$emit('rename', project);
     },
   },
 });
