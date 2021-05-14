@@ -17,22 +17,21 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
+import Vue, { PropType } from 'vue';
+import { Project } from '../entities/project.entity';
 
 export default Vue.extend({
   props: {
-    loading: {
-      type: Boolean,
-    },
+    loading: { type: Boolean },
 
     projects: {
       required: true,
-      type: Array,
+      type: Array as PropType<Project[]>,
     },
   },
 
   methods: {
-    handleEditClick(project) {
+    handleEditClick(project: Project) {
       this.$emit('rename', project);
     },
   },

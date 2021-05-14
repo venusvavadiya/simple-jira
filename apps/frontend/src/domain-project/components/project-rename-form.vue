@@ -16,22 +16,21 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
+import Vue, { PropType } from 'vue';
+import { Project } from '../entities/project.entity';
 
 export default Vue.extend({
   props: {
-    loading: {
-      type: Boolean,
-    },
+    loading: { type: Boolean },
 
     project: {
       required: true,
-      type: Object,
+      type: Object as PropType<Project>,
     },
   },
 
   computed: {
-    localProject() {
+    localProject(): Project {
       return { ...this.project };
     },
   },

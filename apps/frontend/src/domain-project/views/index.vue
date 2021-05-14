@@ -9,7 +9,7 @@
     pl-dialog(v-model="projectDialog.isOpen")
       project-rename-form(
         :loading="projectDialog.isDoneLoading"
-        :project="projectDialog.project"
+        :project="projectDialog"
         @cancel="closeProjectDialog"
         @done="handleProjectRenameFormDone"
       )
@@ -19,6 +19,7 @@
 import Vue from 'vue';
 import ProjectList from '../components/project-list.vue';
 import ProjectRenameForm from '../components/project-rename-form.vue';
+import { Project } from '../entities/project.entity';
 
 export default Vue.extend({
   components: {
@@ -53,7 +54,7 @@ export default Vue.extend({
       this.isProjectsLoading = false;
     },
 
-    async handleProjectRenameFormDone(project) {
+    async handleProjectRenameFormDone(project: Project) {
       this.projectDialog.isDoneLoading = true;
       await this.projectRepository.save(project);
       this.projectDialog.isDoneLoading = false;
@@ -66,7 +67,7 @@ export default Vue.extend({
       this.projectDialog.project = {};
     },
 
-    openProjectDialog(project) {
+    openProjectDialog(project: Project) {
       this.projectDialog.isOpen = true;
       this.projectDialog.project = project;
     },
