@@ -25,7 +25,7 @@ export class AppModule {
     eventSubscription: EventSubscription,
     mongoDB: MongoDB,
   ): DynamicModule {
-    const projectEntityRepository = new MongoDBProjectEntityRepository(mongoDB);
+    const projectEntityRepository = new MongoDBProjectEntityRepository(mongoDB.collection('projects'));
     eventSubscription.register(new ProjectAggregateEventListener(projectEntityRepository));
 
     const projectAggregateRepository = new ProjectAggregateRepository(eventStore);
