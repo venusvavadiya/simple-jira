@@ -1,12 +1,6 @@
-<template>
-  <div>
-    <div
-      class="mx-auto"
-      :style="{ maxWidth }"
-    >
-      <slot />
-    </div>
-  </div>
+<template lang="pug">
+  .mx-auto(:style="style")
+    slot
 </template>
 
 <script lang="ts">
@@ -17,6 +11,7 @@ export default Vue.extend({
     threshold: {
       default: 'sm',
       type: String,
+
       validator(value) {
         return ['xs', 'sm', 'md', 'lg'].includes(value);
       },
@@ -24,9 +19,10 @@ export default Vue.extend({
   },
 
   computed: {
-    maxWidth() {
+    style() {
       const threshold = this.$vuetify.breakpoint.thresholds[this.threshold];
-      return `${threshold}px`;
+      const maxWidth = `${threshold}px`;
+      return { maxWidth };
     },
   },
 });

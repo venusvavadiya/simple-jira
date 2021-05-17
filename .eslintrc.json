@@ -19,9 +19,6 @@
       }
     }
   ],
-  "parserOptions": {
-    "project": "./tsconfig.*?.json"
-  },
   "plugins": [
     "@nrwl/nx"
   ],

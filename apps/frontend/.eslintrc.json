@@ -18,7 +18,6 @@
       "style"
     ],
     "vue/no-template-target-blank": "error",
-    "vue/no-unused-properties": "error",
     "vue/no-useless-v-bind": "error",
     "vue/padding-line-between-blocks": "error",
     "vue/require-direct-export": "error",
